@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aureum Apartments — Guest Guide · Birgu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+  :root {
+    --gold: #b49b57;
+    --gold-light: #c9b06a;
+    --gold-pale: #f5f0e4;
+    --gold-border: rgba(180,155,87,0.22);
+    --navy: #151B54;
+    --navy-soft: #1e276b;
+    --cream: #faf8f3;
+    --cream-dark: #f3f0e8;
+    --white: #ffffff;
+    --text: #252525;
+    --text-mid: #555048;
+    --text-light: #8c887e;
+    --border: rgba(180,155,87,0.16);
+    --border-soft: rgba(37,37,37,0.08);
+    --radius: 14px;
+    --radius-sm: 9px;
+    --shadow: 0 1px 12px rgba(21,27,84,0.06), 0 2px 4px rgba(0,0,0,0.03);
+    --shadow-md: 0 4px 24px rgba(21,27,84,0.09), 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(250,248,243,0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    gap: 16px;
+  }
+  .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+  .nav-logo svg { height: 44px; width: auto; }
+  .nav-links {
+    display: flex;
+    gap: 2px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    font-size: 0.71rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: all 0.18s;
+  }
+  .nav-links a:hover { color: var(--navy); background: var(--gold-pale); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 44px 20px 40px;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.7) saturate(.9);
+    z-index: -2;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.30) 45%, rgba(0,0,0,0.65) 100%);
+    z-index: -1;
+  }
+  .hero-logo {
+    margin: 0 auto 24px;
+    max-width: 180px;
+  }
+  .hero-logo svg { width: 100%; height: auto; }
+  .hero-location {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-address {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .chip {
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.08);
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── QUICK NAV TILES (mobile homepage) ─── */
+  .quick-nav {
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+  .quick-nav-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 480px) {
+    .quick-nav-grid { grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  }
+  .quick-tile {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 8px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.18s;
+    box-shadow: var(--shadow);
+  }
+  .quick-tile:hover { border-color: var(--gold); background: var(--gold-pale); }
+  .quick-tile-icon { font-size: 1.4rem; display: block; margin-bottom: 5px; }
+  .quick-tile-label { font-size: 0.69rem; font-weight: 500; color: var(--text-mid); line-height: 1.3; letter-spacing: 0.02em; }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--border-soft);
+    background: var(--cream);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-eyebrow {
+    font-size: 0.67rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .gold-bar {
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+  }
+  .card p {
+    color: var(--text-mid);
+    font-size: 0.94rem;
+    margin-bottom: 10px;
+    line-height: 1.72;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  .card-highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+  .card-note {
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  /* ─── TWO COL ─── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 580px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ─── CHECK-IN STEPS ─── */
+  .checkin-steps {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 1px;
+  }
+  .step-body > strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .step-body span { font-size: 0.87rem; color: var(--text-mid); line-height: 1.55; }
+  .step-body span strong { color: var(--navy); font-weight: 600; }
+  .code-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: var(--gold-pale);
+    color: var(--navy);
+    border: 1px solid var(--gold-border);
+    border-radius: 6px;
+    padding: 2px 10px;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ─── HOUSE RULES ─── */
+  .rules-list { list-style: none; display: grid; gap: 11px; }
+  .rules-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+  .rule-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--cream-dark);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .rules-list li strong { display: block; font-size: 0.88rem; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+
+  /* ─── WIFI ─── */
+  .wifi-card {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .wifi-label {
+    font-size: 0.67rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  .wifi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 500px) { .wifi-row { grid-template-columns: 1fr; gap: 16px; } }
+  .wifi-field label {
+    font-size: 0.67rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .wifi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    word-break: break-all;
+  }
+  .wifi-hint {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+  .wifi-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.18s;
+    font-family: inherit;
+  }
+  .wifi-copy-btn:hover { background: rgba(255,255,255,0.18); color: white; border-color: rgba(255,255,255,0.35); }
+  .wifi-copy-btn.copied { background: rgba(180,155,87,0.25); border-color: var(--gold); color: var(--gold); }
+
+  /* ─── KNOW CARDS ─── */
+  .know-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  @media (max-width: 560px) { .know-grid { grid-template-columns: 1fr; } }
+  .know-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+  }
+  .know-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+  .know-card strong { display: block; font-size: 0.87rem; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .know-card span { font-size: 0.84rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* ─── ESSENTIALS ─── */
+  .essentials-list { display: grid; gap: 10px; }
+  .essential-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.18s, border-color 0.18s;
+  }
+  .essential-item:hover { border-color: var(--gold); box-shadow: var(--shadow-md); }
+  .essential-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--gold-pale);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .essential-info { flex: 1; }
+  .essential-name { font-weight: 500; font-size: 0.93rem; color: var(--navy); margin-bottom: 2px; }
+  .essential-detail { font-size: 0.8rem; color: var(--text-light); }
+
+  /* ─── RESTAURANTS ─── */
+  .cat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-label:first-of-type { margin-top: 0; }
+  .resto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 4px; }
+  @media (max-width: 560px) { .resto-grid { grid-template-columns: 1fr; } }
+  .resto-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.18s, border-color 0.18s;
+  }
+  .resto-card:hover { border-color: var(--gold-light); box-shadow: var(--shadow-md); }
+  .resto-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .resto-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    background: var(--gold-pale);
+    color: var(--gold);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 9px;
+    font-weight: 500;
+  }
+  .resto-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.55; }
+  .tba { display: inline-block; font-size: 0.72rem; background: #fef9ec; color: #9a7d2a; border-radius: 4px; padding: 2px 8px; font-style: italic; border: 1px solid rgba(154,125,42,0.2); margin-top: 6px; }
+
+  /* ─── TRANSPORT ─── */
+  .transport-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .transport-grid { grid-template-columns: 1fr; } }
+  .transport-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .transport-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+  .transport-name { font-weight: 500; font-size: 0.92rem; color: var(--navy); margin-bottom: 5px; }
+  .transport-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.5; }
+  .transport-card.full { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 16px; }
+  .transport-card.full .transport-icon { margin-bottom: 0; flex-shrink: 0; }
+
+  /* ─── PLACES ─── */
+  .places-list { display: grid; gap: 12px; }
+  .place-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.18s;
+  }
+  .place-card:hover { box-shadow: var(--shadow-md); }
+  .place-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .place-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.5; }
+  .place-dist { font-size: 0.76rem; color: var(--gold); margin-top: 6px; font-weight: 500; }
+  .map-btn {
+    flex-shrink: 0;
+    border: 1px solid var(--gold-border);
+    border-radius: 6px;
+    padding: 6px 13px;
+    font-size: 0.73rem;
+    color: var(--gold);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    background: var(--gold-pale);
+    transition: all 0.18s;
+    margin-top: 2px;
+  }
+  .place-card:hover .map-btn { background: var(--gold); color: white; border-color: var(--gold); }
+
+  /* ─── BEACHES ─── */
+  .beach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 560px) { .beach-grid { grid-template-columns: 1fr 1fr; } }
+  .beach-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .beach-emoji { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+  .beach-name { font-weight: 500; font-size: 0.88rem; color: var(--navy); margin-bottom: 3px; }
+  .beach-dist { font-size: 0.76rem; color: var(--text-light); }
+
+  /* ─── DAY TRIPS ─── */
+  .trips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .trips-grid { grid-template-columns: 1fr; } }
+  .trip-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 22px;
+    box-shadow: var(--shadow);
+  }
+  .trip-icon { font-size: 1.4rem; margin-bottom: 10px; display: block; }
+  .trip-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .trip-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.55; }
+  .trip-how { font-size: 0.76rem; color: var(--gold); margin-top: 10px; font-weight: 500; }
+
+  /* ─── CONTACT ─── */
+  .contact-intro { font-size: 0.95rem; color: var(--text-mid); margin-bottom: 24px; line-height: 1.75; }
+  .contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { .contact-cards { grid-template-columns: 1fr; } }
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.18s, border-color 0.18s;
+    display: block;
+  }
+  .contact-card:hover { box-shadow: var(--shadow-md); border-color: #25D366; }
+  .contact-avatar {
+    width: 50px; height: 50px;
+    background: var(--gold-pale);
+    border: 1.5px solid var(--gold-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--gold);
+    margin: 0 auto 12px;
+  }
+  .contact-name { font-weight: 500; font-size: 1rem; color: var(--navy); margin-bottom: 3px; }
+  .contact-role { font-size: 0.74rem; color: var(--text-light); margin-bottom: 10px; letter-spacing: 0.04em; }
+  .contact-number { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 16px; }
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: #25D366; color: white;
+    border-radius: 8px; padding: 9px 20px;
+    font-size: 0.81rem; font-weight: 500; letter-spacing: 0.03em;
+    transition: background 0.18s;
+  }
+  .wa-btn:hover { background: #1ebe59; }
+
+  /* ─── MAP BLOCK ─── */
+  .map-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+  .address-main { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--navy); font-weight: 400; margin-bottom: 4px; }
+  .address-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 18px; }
+
+  /* ─── BUTTONS ─── */
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: white;
+    border-radius: var(--radius-sm);
+    padding: 11px 22px;
+    font-size: 0.87rem; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.18s;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  .btn-navy {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: white;
+    border-radius: var(--radius-sm);
+    padding: 11px 22px;
+    font-size: 0.87rem; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.18s;
+    margin-left: 8px;
+  }
+  .btn-navy:hover { background: var(--navy-soft); }
+
+  /* ─── CLOSING ─── */
+  .closing {
+    background: var(--cream-dark);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 64px 20px 56px;
+  }
+  .closing-logo { max-width: 140px; margin: 0 auto 28px; }
+  .closing-logo svg { width: 100%; height: auto; }
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .closing h2 em { font-style: italic; color: var(--gold); }
+  .closing p { color: var(--text-mid); font-size: 0.94rem; max-width: 400px; margin: 0 auto 32px; line-height: 1.8; }
+  .closing-tagline { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 36px; }
+
+
+  /* ─── PIN GATE ─── */
+  #pinGate {
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 24px;
+  }
+  .pin-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 44px 36px 40px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+  }
+  .pin-logo {
+    max-width: 160px;
+    margin: 0 auto 28px;
+  }
+  .pin-logo svg { width: 100%; height: auto; }
+  .pin-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .pin-subtext {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+  .pin-input {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    text-align: center;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    color: var(--navy);
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.18s;
+    margin-bottom: 14px;
+  }
+  .pin-input:focus { border-color: var(--gold); }
+  .pin-input.error { border-color: #c0392b; }
+  .pin-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.18s;
+    margin-bottom: 16px;
+  }
+  .pin-btn:hover { background: var(--gold-light); }
+  .pin-error {
+    font-size: 0.82rem;
+    color: #c0392b;
+    min-height: 18px;
+    margin-bottom: 4px;
+    display: none;
+  }
+  .pin-error.visible { display: block; }
+  .pin-note {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<!-- PIN GATE -->
+<div id="pinGate">
+  <div class="pin-box">
+    <div class="pin-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616 581" role="img" aria-label="Aureum Apartments">
+        <path fill="#b49b57" d="M153.75,442.87v.66c-3.75-.44-9.83-.66-14.36-.66-4.2,0-10.71.11-16.12.66v-.66c6.96-.66,10.16-3.2,7.73-9.61-1.44-3.75-3.64-8.95-6.18-14.8-4.42-.22-9.72-.33-15.13-.33s-11.15.11-15.46.33c-1.88,4.97-3.75,9.94-5.52,14.8-2.43,6.41-.44,8.94,6.74,9.61v.66c-3.87-.33-8.61-.66-11.93-.66-4.31,0-8.28.33-11.37.66v-.66c3.53-.55,6.96-3.09,9.83-9.72,8.17-18.55,23.41-54.88,29.26-70.12h.22c11.37,25.95,17.89,39.98,31.91,70.34,2.87,6.18,5.19,8.61,10.38,9.5h0ZM122.71,413.49c-4.86-10.93-10.38-23.08-14.14-31.25-3.98,9.72-8.17,20.43-12.37,31.14,3.87.33,9.28.55,13.36.55,4.31,0,8.94-.22,13.14-.44h.01Z"/>
+        <path fill="#b49b57" d="M223.83,363.8v.66c-5.52.66-8.72,2.65-9.06,9.06-.55,10.16-.77,26.06-.77,38.65,0,21.09-10.27,32.14-29.37,32.14s-30.48-11.71-30.48-33.24c0-13.69,0-27.39-.66-37.55-.33-5.96-3.2-7.95-9.28-9.06v-.66c5.74.44,10.49.66,15.02.66s9.39-.22,15.02-.66v.66c-5.96,1.1-8.94,2.98-9.28,9.06-.66,10.6-.66,24.41-.66,37.99,0,19.22,7.18,28.16,21.87,28.16s21.76-8.17,21.76-27.06c0-10.82-.22-29.6-.66-38.98-.33-6.52-3.64-8.5-9.17-9.17v-.66c5.3.44,8.83.66,12.92.66,3.75,0,7.51-.22,12.81-.66h0Z"/>
+        <path fill="#b49b57" d="M303.83,442.76v.66c-31.03,0-26.06-7.29-43.95-33.79-1.21.11-2.43.22-3.75.22-2.65,0-5.74-.22-8.06-.44,0,8.83.11,15.46.66,24.18.33,5.96,3.2,8.17,9.28,9.28v.66c-5.63-.44-10.6-.66-15.02-.66s-9.39.22-15.02.66v-.66c5.96-.99,8.94-3.31,9.28-9.28.55-9.94.66-18.66.66-29.93,0-7.51,0-21.76-.55-30.48-.44-6.07-3.31-7.84-9.28-8.72v-.66c5.41.44,9.61.66,14.14.66,4.97,0,9.94-.44,14.02-.44,17.12,0,26.06,9.39,26.06,21.76,0,8.5-4.31,16.45-12.04,20.65,14.47,24.07,21.09,36.11,33.57,36.33h0ZM271.92,387.43c0-9.61-4.86-19.22-17.01-19.22-2.1,0-4.09.22-6.18.44-.66,16.12-.66,23.85-.66,35.01v2.1c1.88.33,4.09.66,6.85.66,13.91,0,17.01-11.37,17.01-18.99h-.01Z"/>
+        <path fill="#b49b57" d="M358.77,427.08c-.55,5.41-.55,10.6,0,16.34-9.83-.66-16.56-.55-23.96-.55-6.96,0-20.1.11-26.72.66v-.66c5.85-.99,8.94-2.98,9.28-9.39.55-10.16.55-17.67.55-29.82,0-10.82,0-19.77-.55-29.71-.33-6.07-3.31-8.5-9.17-9.5v-.66c6.74.55,16.12.66,26.61.66,7.95,0,17.12-.22,23.52-.66-.33,4.31-.44,9.94,0,15.13h-.66c-1.66-8.83-5.96-10.82-16.56-10.82-3.42,0-7.62.11-12.37.66-.55,14.69-.66,21.87-.66,30.92,3.31.11,6.85.11,12.59,0,7.62-.11,9.06-3.09,10.27-7.95l.66.11c-.33,3.2-.66,6.52-.66,9.61s.22,6.41.66,9.5l-.66.11c-1.44-5.3-2.54-7.4-10.27-7.62-4.53-.11-8.61-.11-12.59-.11v.33c0,12.04.11,20.87.44,26.83.55,7.51,6.07,8.17,14.58,8.17,9.06,0,12.7-1.88,15.02-11.71l.66.11v.02h0Z"/>
+        <path fill="#b49b57" d="M442.19,363.8v.66c-5.52.66-8.72,2.65-9.06,9.06-.55,10.16-.77,26.06-.77,38.65,0,21.09-10.27,32.14-29.37,32.14s-30.48-11.71-30.48-33.24c0-13.69,0-27.39-.66-37.55-.33-5.96-3.2-7.95-9.28-9.06v-.66c5.74.44,10.49.66,15.02.66s9.39-.22,15.02-.66v.66c-5.96,1.1-8.95,2.98-9.28,9.06-.66,10.6-.66,24.41-.66,37.99,0,19.22,7.18,28.16,21.87,28.16s21.75-8.17,21.75-27.06c0-10.82-.22-29.6-.66-38.98-.33-6.52-3.64-8.5-9.17-9.17v-.66c5.3.44,8.83.66,12.92.66,3.75,0,7.51-.22,12.81-.66h0Z"/>
+        <path fill="#b49b57" d="M539.56,433.53l-7.98-59.08c-.11-1.18-.08-2.39.23-3.54,1.34-4.96,6.1-7.37,10.94-7.95v-.66c-5.3.44-15.15.65-19.24.65l-28.8,62.13-.26,1.44-28.78-62.07c-4.09,0-13.94-.21-19.24-.65v.66c4.83.58,9.6,2.99,10.94,7.95.31,1.15.35,2.35.23,3.54l-5.4,57.15c-.88,6.51-4.37,8.28-10.67,9.17v.66c5.3-.44,8.28-.55,12.26-.55s7.47.11,12.88.55v-.66c-6.41-1.1-8.61-2.65-8.06-9.17,1.1-14.8,2.18-34.83,4.17-49.96,10.71,18.22,19.22,42.67,28.6,60.67h2.21l28.51-63.66,5.64,53.28c.44,6.3-2.76,7.95-8.39,8.83v.66c5.52-.44,10.49-.55,14.8-.55,5.08,0,9.83.11,15.35.55v-.66c-5.96-.99-9.17-2.65-9.94-8.72h0Z"/>
+        <path fill="#b49b57" d="M468.38,330.38c-.42-.52-1.02-.9-1.72-1.05-18.46-3.74-27.17-13.11-37.86-35.51l-117.92-252.99c-1.3-2.78-5.25-2.76-6.51.03l-110.69,251.06c-.29.64-.58,1.27-.87,1.89-.91,1.93-1.85,3.77-2.83,5.51-9.51,18.47-18.17,26.46-35.01,30.01-2.58.54-2.4,3.84-2.4,3.94h10.06c19.98,0,37.82-12.19,46.86-29.67l4.15-9.67.09-.24.46-1.08,25.95-60.54h122.59l26.97,59.54c11.22,24.76,33.4,41.66,69.35,41.66h10.01c0-.71-.25-2.37-.68-2.89ZM246.11,218.14l53.62-125.13,56.17,125.13h-109.79Z"/>
+        <path fill="#151b54" d="M414.04,329.02c-.27-.34-.68-.56-1.12-.69-5.72-1.73-19.87-8.82-26.88-23.5l-75.16-165.47c-.85-1.82-3.44-1.81-4.26.02l-34.73,78.76h12.57l15.34-35.79,15.97,35.79,34.55,77.43c9.39,21.03,30.06,35.06,53.09,35.27.68,0,1.37,0,2.07-.01.82.05,1.64.08,2.45.08h6.56c0-.47-.17-1.55-.45-1.89h0ZM234.11,303.82c-.19.42-.38.84-.57,1.24-.59,1.27-1.21,2.47-1.85,3.61-6.23,12.1-11.9,17.33-22.93,19.66-1.69.35-1.57,2.51-1.57,2.58h6.58c13.09,0,24.78-7.99,30.7-19.43l2.72-6.34.06-.16.3-.7,30.94-72.21h-12.74l-31.64,71.75h0Z"/>
+        <path fill="#151b54" d="M167.76,493.23h-11.16l-2.31,5.25h-3.09l9.51-21h2.97l9.54,21h-3.15l-2.31-5.25ZM166.71,490.83l-4.53-10.29-4.53,10.29h9.06Z"/>
+        <path fill="#151b54" d="M205.29,484.8c0,4.56-3.3,7.32-8.76,7.32h-5.19v6.36h-3v-21h8.19c5.46,0,8.76,2.76,8.76,7.32ZM202.29,484.8c0-3-2.01-4.71-5.85-4.71h-5.1v9.42h5.1c3.84,0,5.85-1.71,5.85-4.71h0Z"/>
+        <path fill="#151b54" d="M234.03,493.23h-11.16l-2.31,5.25h-3.09l9.51-21h2.97l9.54,21h-3.15l-2.31-5.25ZM232.98,490.83l-4.53-10.29-4.53,10.29h9.06Z"/>
+        <path fill="#151b54" d="M268.65,498.48l-4.53-6.45c-.42.03-.87.06-1.32.06h-5.19v6.39h-3v-21h8.19c5.46,0,8.76,2.76,8.76,7.32,0,3.24-1.68,5.58-4.62,6.63l4.98,7.05h-3.27ZM268.56,484.8c0-3-2.01-4.71-5.85-4.71h-5.1v9.45h5.1c3.84,0,5.85-1.74,5.85-4.74h0Z"/>
+        <path fill="#151b54" d="M292.29,480.09h-7.2v-2.61h17.37v2.61h-7.2v18.39h-2.97v-18.39h0Z"/>
+        <path fill="#151b54" d="M337.2,498.48l-.03-15.3-7.59,12.75h-1.38l-7.59-12.66v15.21h-2.88v-21h2.46l8.76,14.76,8.64-14.76h2.46l.03,21h-2.88Z"/>
+        <path fill="#151b54" d="M373.62,495.87v2.61h-15.24v-21h14.82v2.61h-11.82v6.45h10.53v2.55h-10.53v6.78h12.24Z"/>
+        <path fill="#151b54" d="M408.54,477.48v21h-2.46l-12.6-15.66v15.66h-3v-21h2.46l12.6,15.66v-15.66h3Z"/>
+        <path fill="#151b54" d="M431.01,480.09h-7.2v-2.61h17.37v2.61h-7.2v18.39h-2.97v-18.39h0Z"/>
+        <path fill="#151b54" d="M454.26,496.08l1.11-2.34c1.56,1.41,4.23,2.43,6.93,2.43,3.63,0,5.19-1.41,5.19-3.24,0-5.13-12.72-1.89-12.72-9.69,0-3.24,2.52-6,8.04-6,2.46,0,5.01.66,6.75,1.86l-.99,2.4c-1.83-1.17-3.9-1.71-5.76-1.71-3.57,0-5.1,1.5-5.1,3.33,0,5.13,12.72,1.92,12.72,9.63,0,3.21-2.58,5.97-8.13,5.97-3.21,0-6.36-1.08-8.04-2.64h0Z"/>
+      </svg>
+    </div>
+    <div class="pin-heading">Welcome to Aureum Apartments</div>
+    <p class="pin-subtext">Enter your access code to open the guest guide.</p>
+    <input class="pin-input" id="pinInput" type="password" maxlength="8" placeholder="••••" autocomplete="off" />
+    <div class="pin-error" id="pinError">Incorrect code — please try again.</div>
+    <button class="pin-btn" id="pinBtn">Open Guestbook</button>
+    <p class="pin-note">This access code is shared before check-in.</p>
+  </div>
+</div>
+
+<!-- GUESTBOOK CONTENT -->
+<div id="guestbookContent" style="display:none;">
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#welcome" target="_self" aria-label="Aureum Apartments">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616 581" role="img" aria-label="Aureum logo">
+        <path fill="#b49b57" d="M153.75,442.87v.66c-3.75-.44-9.83-.66-14.36-.66-4.2,0-10.71.11-16.12.66v-.66c6.96-.66,10.16-3.2,7.73-9.61-1.44-3.75-3.64-8.95-6.18-14.8-4.42-.22-9.72-.33-15.13-.33s-11.15.11-15.46.33c-1.88,4.97-3.75,9.94-5.52,14.8-2.43,6.41-.44,8.94,6.74,9.61v.66c-3.87-.33-8.61-.66-11.93-.66-4.31,0-8.28.33-11.37.66v-.66c3.53-.55,6.96-3.09,9.83-9.72,8.17-18.55,23.41-54.88,29.26-70.12h.22c11.37,25.95,17.89,39.98,31.91,70.34,2.87,6.18,5.19,8.61,10.38,9.5h0ZM122.71,413.49c-4.86-10.93-10.38-23.08-14.14-31.25-3.98,9.72-8.17,20.43-12.37,31.14,3.87.33,9.28.55,13.36.55,4.31,0,8.94-.22,13.14-.44h.01Z"/>
+        <path fill="#b49b57" d="M223.83,363.8v.66c-5.52.66-8.72,2.65-9.06,9.06-.55,10.16-.77,26.06-.77,38.65,0,21.09-10.27,32.14-29.37,32.14s-30.48-11.71-30.48-33.24c0-13.69,0-27.39-.66-37.55-.33-5.96-3.2-7.95-9.28-9.06v-.66c5.74.44,10.49.66,15.02.66s9.39-.22,15.02-.66v.66c-5.96,1.1-8.94,2.98-9.28,9.06-.66,10.6-.66,24.41-.66,37.99,0,19.22,7.18,28.16,21.87,28.16s21.76-8.17,21.76-27.06c0-10.82-.22-29.6-.66-38.98-.33-6.52-3.64-8.5-9.17-9.17v-.66c5.3.44,8.83.66,12.92.66,3.75,0,7.51-.22,12.81-.66h0Z"/>
+        <path fill="#b49b57" d="M303.83,442.76v.66c-31.03,0-26.06-7.29-43.95-33.79-1.21.11-2.43.22-3.75.22-2.65,0-5.74-.22-8.06-.44,0,8.83.11,15.46.66,24.18.33,5.96,3.2,8.17,9.28,9.28v.66c-5.63-.44-10.6-.66-15.02-.66s-9.39.22-15.02.66v-.66c5.96-.99,8.94-3.31,9.28-9.28.55-9.94.66-18.66.66-29.93,0-7.51,0-21.76-.55-30.48-.44-6.07-3.31-7.84-9.28-8.72v-.66c5.41.44,9.61.66,14.14.66,4.97,0,9.94-.44,14.02-.44,17.12,0,26.06,9.39,26.06,21.76,0,8.5-4.31,16.45-12.04,20.65,14.47,24.07,21.09,36.11,33.57,36.33h0ZM271.92,387.43c0-9.61-4.86-19.22-17.01-19.22-2.1,0-4.09.22-6.18.44-.66,16.12-.66,23.85-.66,35.01v2.1c1.88.33,4.09.66,6.85.66,13.91,0,17.01-11.37,17.01-18.99h-.01Z"/>
+        <path fill="#b49b57" d="M358.77,427.08c-.55,5.41-.55,10.6,0,16.34-9.83-.66-16.56-.55-23.96-.55-6.96,0-20.1.11-26.72.66v-.66c5.85-.99,8.94-2.98,9.28-9.39.55-10.16.55-17.67.55-29.82,0-10.82,0-19.77-.55-29.71-.33-6.07-3.31-8.5-9.17-9.5v-.66c6.74.55,16.12.66,26.61.66,7.95,0,17.12-.22,23.52-.66-.33,4.31-.44,9.94,0,15.13h-.66c-1.66-8.83-5.96-10.82-16.56-10.82-3.42,0-7.62.11-12.37.66-.55,14.69-.66,21.87-.66,30.92,3.31.11,6.85.11,12.59,0,7.62-.11,9.06-3.09,10.27-7.95l.66.11c-.33,3.2-.66,6.52-.66,9.61s.22,6.41.66,9.5l-.66.11c-1.44-5.3-2.54-7.4-10.27-7.62-4.53-.11-8.61-.11-12.59-.11v.33c0,12.04.11,20.87.44,26.83.55,7.51,6.07,8.17,14.58,8.17,9.06,0,12.7-1.88,15.02-11.71l.66.11v.02h0Z"/>
+        <path fill="#b49b57" d="M442.19,363.8v.66c-5.52.66-8.72,2.65-9.06,9.06-.55,10.16-.77,26.06-.77,38.65,0,21.09-10.27,32.14-29.37,32.14s-30.48-11.71-30.48-33.24c0-13.69,0-27.39-.66-37.55-.33-5.96-3.2-7.95-9.28-9.06v-.66c5.74.44,10.49.66,15.02.66s9.39-.22,15.02-.66v.66c-5.96,1.1-8.95,2.98-9.28,9.06-.66,10.6-.66,24.41-.66,37.99,0,19.22,7.18,28.16,21.87,28.16s21.75-8.17,21.75-27.06c0-10.82-.22-29.6-.66-38.98-.33-6.52-3.64-8.5-9.17-9.17v-.66c5.3.44,8.83.66,12.92.66,3.75,0,7.51-.22,12.81-.66h0Z"/>
+        <path fill="#b49b57" d="M539.56,433.53l-7.98-59.08c-.11-1.18-.08-2.39.23-3.54,1.34-4.96,6.1-7.37,10.94-7.95v-.66c-5.3.44-15.15.65-19.24.65l-28.8,62.13-.26,1.44-28.78-62.07c-4.09,0-13.94-.21-19.24-.65v.66c4.83.58,9.6,2.99,10.94,7.95.31,1.15.35,2.35.23,3.54l-5.4,57.15c-.88,6.51-4.37,8.28-10.67,9.17v.66c5.3-.44,8.28-.55,12.26-.55s7.47.11,12.88.55v-.66c-6.41-1.1-8.61-2.65-8.06-9.17,1.1-14.8,2.18-34.83,4.17-49.96,10.71,18.22,19.22,42.67,28.6,60.67h2.21l28.51-63.66,5.64,53.28c.44,6.3-2.76,7.95-8.39,8.83v.66c5.52-.44,10.49-.55,14.8-.55,5.08,0,9.83.11,15.35.55v-.66c-5.96-.99-9.17-2.65-9.94-8.72h0Z"/>
+        <path fill="#b49b57" d="M468.38,330.38c-.42-.52-1.02-.9-1.72-1.05-18.46-3.74-27.17-13.11-37.86-35.51l-117.92-252.99c-1.3-2.78-5.25-2.76-6.51.03l-110.69,251.06c-.29.64-.58,1.27-.87,1.89-.91,1.93-1.85,3.77-2.83,5.51-9.51,18.47-18.17,26.46-35.01,30.01-2.58.54-2.4,3.84-2.4,3.94h10.06c19.98,0,37.82-12.19,46.86-29.67l4.15-9.67.09-.24.46-1.08,25.95-60.54h122.59l26.97,59.54c11.22,24.76,33.4,41.66,69.35,41.66h10.01c0-.71-.25-2.37-.68-2.89ZM246.11,218.14l53.62-125.13,56.17,125.13h-109.79Z"/>
+        <path fill="#151b54" d="M414.04,329.02c-.27-.34-.68-.56-1.12-.69-5.72-1.73-19.87-8.82-26.88-23.5l-75.16-165.47c-.85-1.82-3.44-1.81-4.26.02l-34.73,78.76h12.57l15.34-35.79,15.97,35.79,34.55,77.43c9.39,21.03,30.06,35.06,53.09,35.27.68,0,1.37,0,2.07-.01.82.05,1.64.08,2.45.08h6.56c0-.47-.17-1.55-.45-1.89h0ZM234.11,303.82c-.19.42-.38.84-.57,1.24-.59,1.27-1.21,2.47-1.85,3.61-6.23,12.1-11.9,17.33-22.93,19.66-1.69.35-1.57,2.51-1.57,2.58h6.58c13.09,0,24.78-7.99,30.7-19.43l2.72-6.34.06-.16.3-.7,30.94-72.21h-12.74l-31.64,71.75h0Z"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#checkin" target="_self">Check-in</a>
+      <a href="#luggage" target="_self">Luggage</a>
+      <a href="#wifi" target="_self">WiFi</a>
+      <a href="#rules" target="_self">Rules</a>
+      <a href="#goodtoknow" target="_self">Good to Know</a>
+      <a href="#eat" target="_self">Eat &amp; Drink</a>
+      <a href="#contact" target="_self">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="welcome">
+  <video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-logo"><img src="aureum-logo.svg" alt="Aureum Apartments"></div>
+  <div class="hero-location">Birgu, Malta</div>
+  <h1>Your guide to<br><em>a comfortable stay</em></h1>
+  <div class="hero-address">24 Triq Il-Kardinal Fabrizio Sciberras · Birgu</div>
+  <div class="hero-chips">
+    <span class="chip">Up to 4 guests</span>
+    <span class="chip">Private rooftop</span>
+    <span class="chip">Self check-in</span>
+    <span class="chip">Historic Birgu</span>
+  </div>
+</div>
+
+<!-- QUICK NAV -->
+<div class="quick-nav">
+  <div class="quick-nav-grid">
+    <a class="quick-tile" href="#checkin" target="_self">
+      <span class="quick-tile-icon">🔑</span>
+      <span class="quick-tile-label">Check-in</span>
+    </a>
+    <a class="quick-tile" href="#wifi" target="_self">
+      <span class="quick-tile-icon">📶</span>
+      <span class="quick-tile-label">WiFi</span>
+    </a>
+    <a class="quick-tile" href="#essentials" target="_self">
+      <span class="quick-tile-icon">🛒</span>
+      <span class="quick-tile-label">Nearby</span>
+    </a>
+    <a class="quick-tile" href="#contact" target="_self">
+      <span class="quick-tile-icon">💬</span>
+      <span class="quick-tile-label">Contact</span>
+    </a>
+  </div>
+</div>
+
+<!-- CHECK-IN -->
+<section id="checkin">
+  <div class="container">
+    <div class="section-eyebrow">Arrival</div>
+    <h2 class="section-title">Check-in</h2>
+    <div class="gold-bar"></div>
+
+    <div class="two-col" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-highlight">From 4:00 PM</div>
+        <p>Self check-in is available. No need to wait for anyone — just follow the steps below.</p>
+      </div>
+      <div class="card">
+        <div class="card-highlight">Early arrival?</div>
+        <p>If you arrive before 4:00 PM, feel free to contact us — if the townhouse isn't ready yet, you're still welcome to leave your bags with us while we finish up.</p>
+      </div>
+    </div>
+
+    <div class="checkin-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Find the building</strong>
+          <span>Look for the cream-coloured door with the number <strong>24</strong> on <strong>Triq Il-Kardinal Fabrizio Sciberras</strong>.</span>
+          <div style="margin-top:12px;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:var(--cream);">
+            <img src="door.jpg" alt="Cream-coloured door, number 24" style="width:100%;height:320px;object-fit:contain;display:block;background:var(--cream);">
+            <div style="padding:10px 14px;font-size:.8rem;color:var(--text-mid);background:#fff;border-top:1px solid var(--border);">📍 Cream door · number 24</div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Get your key</strong>
+          <span>The key box is on the side of the main door. Key box code: <span class="code-badge">4267</span></span>
+          <div style="margin-top:12px;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:var(--cream);">
+            <img src="locker.jpg" alt="Key box on the side of the door" style="width:100%;height:320px;object-fit:contain;display:block;background:var(--cream);">
+            <div style="padding:10px 14px;font-size:.8rem;color:var(--text-mid);background:#fff;border-top:1px solid var(--border);">🔑 Key box · code 4267</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECK-OUT -->
+<section id="checkout">
+  <div class="container">
+    <div class="section-eyebrow">Departure</div>
+    <h2 class="section-title">Check-out</h2>
+    <div class="gold-bar"></div>
+
+    <div class="card">
+      <div class="card-highlight">By 10:00 AM</div>
+      <p>Please leave the apartment by 10:00 AM on your departure day.</p>
+      <p>Return the key to the box and make sure the door is locked behind you. A quick message once you've left is always appreciated.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LUGGAGE STORAGE -->
+<section id="luggage">
+  <div class="container">
+    <div class="section-eyebrow">Before check-in or after check-out</div>
+    <h2 class="section-title">Luggage Storage</h2>
+    <div class="gold-bar"></div>
+
+    <p style="font-size:.93rem;color:var(--text-mid);margin-bottom:20px;line-height:1.75;">A nearby option for storing your bags — useful if you arrive early or need to leave after check-out.</p>
+
+    <div class="card" style="display:flex;flex-direction:column;gap:14px;">
+      <div>
+        <div class="card-highlight" style="font-size:1.2rem;">BagBuddy24</div>
+        <p>Self-service luggage storage in Birgu. Convenient for early arrivals or for keeping your bags safe after check-out.</p>
+        <p style="font-size:.83rem;color:var(--text-light);">Birgu (Vittoriosa)</p>
+      </div>
+      <a href="https://maps.app.goo.gl/16Wejtdfh5WG9Rmt7" target="_blank" rel="noopener" class="btn-gold" style="align-self:flex-start;">📍 Open map</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section id="directions">
+  <div class="container">
+    <div class="section-eyebrow">Getting here</div>
+    <h2 class="section-title">Directions</h2>
+    <div class="gold-bar"></div>
+
+    <div class="map-block">
+      <div class="address-main">24 Triq Il-Kardinal Fabrizio Sciberras, Birgu</div>
+      <div class="address-sub">Townhouse · Multiple levels · Private rooftop</div>
+      <a class="btn-gold" href="https://maps.app.goo.gl/ibznmPjD6f9ww3QY8" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+    </div>
+
+    <div class="card">
+      <p>The townhouse is located in the heart of historic Birgu, also known as Vittoriosa, just behind St Lawrence Church and close to the waterfront.</p>
+      <p>Birgu is a historic town with narrow streets, so we recommend using the Google Maps link provided here rather than relying only on the automatic address shown by booking platforms.</p>
+      <p>If arriving by taxi, Bolt or Uber, ask to be dropped off as close as possible to St Lawrence Church / Birgu waterfront. From there, the townhouse is only a short walk away.</p>
+      <p>Parking in Birgu is public street parking and can be limited, especially during busy times. A car is not necessary for most stays, as the waterfront, restaurants, cafés and the ferry to Valletta are all nearby.</p>
+      <p class="card-note">Please note that the home is a traditional townhouse arranged over multiple levels, with stairs inside the property.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSE RULES -->
+<section id="rules">
+  <div class="container">
+    <div class="section-eyebrow">Please note</div>
+    <h2 class="section-title">House Rules</h2>
+    <div class="gold-bar"></div>
+
+    <ul class="rules-list">
+      <li>
+        <span class="rule-icon">🚭</span>
+        <div><strong>No smoking indoors <span style="color:#c0392b;font-weight:600;">— €250 fee applies</span></strong>Smoking is only permitted on the rooftop. Please close windows and doors when smoking outside.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🎉</span>
+        <div><strong>No parties or events <span style="color:#c0392b;font-weight:600;">— €250 fee applies</span></strong>Parties and events of any kind are not permitted in the townhouse. This applies at any time.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🌿</span>
+        <div><strong>Help us keep it green</strong>Switch off lights and air conditioning when you head out — even for a short while. Every little helps.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🤫</span>
+        <div><strong>Noise & neighbours</strong>Please keep noise low, especially between 10:00 PM and 8:00 AM. We share the neighbourhood with residents.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🗑️</span>
+        <div><strong>Waste</strong>You don't need to take rubbish out during your stay. Cleaning takes care of it after check-out.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🔑</span>
+        <div><strong>Keys</strong>Take the key with you whenever you leave. Do not leave it inside if the door is locked.</div>
+      </li>
+      <li>
+        <span class="rule-icon">🐾</span>
+        <div><strong>No pets</strong>Pets are not permitted in the apartment. This is a building regulation that applies to all residents and guests.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- WIFI -->
+<section id="wifi">
+  <div class="container">
+    <div class="section-eyebrow">Stay connected</div>
+    <h2 class="section-title">WiFi</h2>
+    <div class="gold-bar"></div>
+
+    <div class="wifi-card">
+      <div class="wifi-label">Connection details</div>
+      <div class="wifi-row">
+        <div class="wifi-field">
+          <label>Network name</label>
+          <div class="wifi-value">GOINTERNET-849EC4</div>
+        </div>
+        <div class="wifi-field">
+          <label>Password</label>
+          <div class="wifi-value">xTNcXEg4t6</div>
+          <button class="wifi-copy-btn" onclick="copyWifi(this, 'xTNcXEg4t6')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy password
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOD TO KNOW -->
+<section id="goodtoknow">
+  <div class="container">
+    <div class="section-eyebrow">Before you settle in</div>
+    <h2 class="section-title">Good to Know</h2>
+    <div class="gold-bar"></div>
+
+    <div class="know-grid">
+      <div class="know-card">
+        <span class="know-icon">🔌</span>
+        <div>
+          <strong>UK plug sockets</strong>
+          <span>Malta uses three-pin UK-style plugs. Bring a universal adapter if your devices use a different type.</span>
+        </div>
+      </div>
+      <div class="know-card">
+        <span class="know-icon">🏠</span>
+        <div>
+          <strong>Townhouse on multiple levels</strong>
+          <span>The home is a traditional townhouse arranged over several floors with internal stairs. Worth keeping in mind if you have heavy luggage.</span>
+        </div>
+      </div>
+      <div class="know-card">
+        <span class="know-icon">🚿</span>
+        <div>
+          <strong>Hot water</strong>
+          <span>The boiler has a limited capacity. After a long shower, hot water may need 10–15 minutes to recover. If you're sharing the townhouse, it helps to stagger shower times.</span>
+        </div>
+      </div>
+      <div class="know-card">
+        <span class="know-icon">🗣️</span>
+        <div>
+          <strong>Language</strong>
+          <span>English is an official language and widely spoken. Locals also speak Maltese — a few words go a long way.</span>
+        </div>
+      </div>
+      <div class="know-card">
+        <span class="know-icon">👟</span>
+        <div>
+          <strong>Wear comfortable shoes</strong>
+          <span>Birgu has narrow lanes, steps, and uneven stone streets. Comfortable footwear makes a real difference.</span>
+        </div>
+      </div>
+      <div class="know-card">
+        <span class="know-icon">🚶</span>
+        <div>
+          <strong>Birgu is walkable</strong>
+          <span>The historic town is compact — waterfront, restaurants, the ferry to Valletta and most sights are within a few minutes on foot.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL ESSENTIALS -->
+<section id="essentials">
+  <div class="container">
+    <div class="section-eyebrow">Nearby</div>
+    <h2 class="section-title">Local Essentials</h2>
+    <div class="gold-bar"></div>
+
+    <div class="essentials-list">
+      <a class="essential-item" href="https://maps.app.goo.gl/cTPt3a7SdMNzPMTHA" target="_blank" rel="noopener">
+        <div class="essential-icon">🛒</div>
+        <div class="essential-info">
+          <div class="essential-name">MyConvenience</div>
+          <div class="essential-detail">Grocery &amp; convenience · Short walk</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="essential-item" href="https://maps.app.goo.gl/9pPb7CX8zDQsLcXz6" target="_blank" rel="noopener">
+        <div class="essential-icon">🥫</div>
+        <div class="essential-info">
+          <div class="essential-name">St Lawrence Discount Store</div>
+          <div class="essential-detail">Grocery · Very close to the townhouse</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="essential-item" href="https://maps.app.goo.gl/NT49HmAgG6uC4eMw6" target="_blank" rel="noopener">
+        <div class="essential-icon">💊</div>
+        <div class="essential-info">
+          <div class="essential-name">Vittoriosa Pharmacy</div>
+          <div class="essential-detail">Local pharmacy · Short walk</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="essential-item" href="https://maps.app.goo.gl/2pxRjY72QKEEHifw7" target="_blank" rel="noopener">
+        <div class="essential-icon">⛴️</div>
+        <div class="essential-info">
+          <div class="essential-name">Ferry to Valletta</div>
+          <div class="essential-detail">Cospicua ↔ Valletta · Short walk from the townhouse</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="essential-item" href="https://maps.app.goo.gl/yASF6arz6mygk4eh8" target="_blank" rel="noopener">
+        <div class="essential-icon">🚌</div>
+        <div class="essential-info">
+          <div class="essential-name">Bus Terminal</div>
+          <div class="essential-detail">Routes across the island</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="essential-item" href="https://maps.app.goo.gl/16Wejtdfh5WG9Rmt7" target="_blank" rel="noopener">
+        <div class="essential-icon">🧳</div>
+        <div class="essential-info">
+          <div class="essential-name">BagBuddy24 — Luggage</div>
+          <div class="essential-detail">Self-service luggage storage in Birgu</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EAT & DRINK -->
+<section id="eat">
+  <div class="container">
+    <div class="section-eyebrow">Our picks</div>
+    <h2 class="section-title">Eat &amp; Drink</h2>
+    <div class="gold-bar"></div>
+
+    <p style="font-size:.93rem;color:var(--text-mid);margin-bottom:4px;line-height:1.7;">A few places we enjoy — a good starting point for your stay. Birgu has a relaxed local scene right around the townhouse, and Valletta is just a short ferry ride across the harbour.</p>
+
+    <div class="cat-label">🌊 In Birgu</div>
+
+    <div class="cat-label" style="font-size:.78rem;margin-top:18px;color:var(--text-mid);">☕ Breakfast &amp; Coffee</div>
+    <div class="resto-grid">
+      <a class="resto-card" href="https://maps.app.goo.gl/ecg4ERxBTNKnwJYm9" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="manouche.png" alt="Manouche" style="height:72px;width:auto;object-fit:contain;display:block;border-radius:6px;"></div>
+        <div class="resto-name">Manouche</div>
+        <span class="resto-tag">Bakery · Breakfast</span>
+        <div class="resto-desc">A relaxed bakery-café for a proper morning stop — fresh baked goods, coffee, and a quiet table to ease into the day.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://maps.app.goo.gl/gSWfE3bvsDs7F4t1A" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="bella-sicilia.jpg" alt="Bella Sicilia" style="height:72px;width:auto;object-fit:contain;display:block;border-radius:50%;"></div>
+        <div class="resto-name">Bella Sicilia</div>
+        <span class="resto-tag">Sicilian pastries · Gelato</span>
+        <div class="resto-desc">Sicilian gelateria, pasticceria and rosticceria — cannoli, cassata, granita and savoury bites. Perfect for a sweet breakfast or an afternoon stop.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+    </div>
+
+    <div class="cat-label" style="font-size:.78rem;margin-top:18px;color:var(--text-mid);">🍷 Lunch &amp; Dinner</div>
+    <div class="resto-grid">
+      <a class="resto-card" href="https://maps.app.goo.gl/KMMuszGNrrsgKdFi7" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="mykonos.png" alt="Mykonos by Yiamas" style="height:48px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">Mykonos by Yiamas</div>
+        <span class="resto-tag">Greek Tavernaki · Waterfront</span>
+        <div class="resto-desc">A proper Greek tavernaki on the Birgu waterfront — meze, grilled fish and classic Greek plates in a relaxed seaside setting.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://maps.app.goo.gl/rViWX1kYH8yFkMKeA" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="maresco.jpg" alt="Maresco" style="height:54px;width:auto;object-fit:contain;display:block;mix-blend-mode:multiply;"></div>
+        <div class="resto-name">Maresco</div>
+        <span class="resto-tag">Italian trattoria · Seafood</span>
+        <div class="resto-desc">An authentic Italian trattoria with a strong seafood focus — fresh pasta, fish and classic Italian flavours on the Birgu waterfront.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://maps.app.goo.gl/R6pxbuoytamPJoHU9" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="boa.jpg" alt="Boa Steak and Lobster House" style="height:72px;width:auto;object-fit:contain;display:block;border-radius:6px;"></div>
+        <div class="resto-name">Boa Steak &amp; Lobster House</div>
+        <span class="resto-tag">Steakhouse · Lobster · Stylish</span>
+        <div class="resto-desc">Premium steakhouse with a strong focus on cuts and lobster — refined setting and a strong pick for a special evening out.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+    </div>
+
+    <div class="cat-label">🏛️ In Valletta — short ferry away</div>
+
+    <div class="cat-label" style="font-size:.78rem;margin-top:18px;color:var(--text-mid);">🥙 Quick Lunch</div>
+    <div class="resto-grid">
+      <a class="resto-card" href="https://maps.app.goo.gl/ft1tGh3rnGUwxxCE9" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="is-suq-tal-belt.jpg" alt="Is-Suq tal-Belt" style="height:44px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">Is-Suq tal-Belt</div>
+        <span class="resto-tag">Food Market · Casual</span>
+        <div class="resto-desc">Valletta's covered food market — multiple vendors under one roof, from street food to fresh produce. Great for a quick and varied lunch.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://www.google.com/maps/search/Dal+Pani+Valletta+Malta" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="dal-pani.jpg" alt="Dal Pani" style="height:52px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">Dal Pani</div>
+        <span class="resto-tag">Focacce italiane · Casual</span>
+        <div class="resto-desc">Fresh Italian focacce made to order — simple, generous, and full of flavour. A perfect quick lunch between sightseeing.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+    </div>
+
+    <div class="cat-label" style="font-size:.78rem;margin-top:18px;color:var(--text-mid);">🍕 Casual / Pizza</div>
+    <div class="resto-grid">
+      <a class="resto-card" href="https://www.google.com/maps/search/Sotto+Pinsa+Romana+Valletta" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="sotto-pinsa.jpg" alt="Sotto Pinsa Romana Valletta" style="height:40px;width:auto;object-fit:contain;display:block;border-radius:4px;"></div>
+        <div class="resto-name">Sotto Pinsa Romana Valletta</div>
+        <span class="resto-tag">Pizza · Lunch or dinner</span>
+        <div class="resto-desc">Roman-style pinsa with a lighter base than traditional pizza. Works well for both lunch and a casual evening meal.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://www.google.com/maps/search/Trattoria+Romana+Zero+Sei+Valletta" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="trattoria-zero-sei.jpg" alt="Trattoria Romana Zero Sei" style="height:48px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">Trattoria Romana Zero Sei</div>
+        <span class="resto-tag">Italian · Best carbonara on the island</span>
+        <div class="resto-desc">Authentic Roman trattoria — unpretentious and reliable. Come for the carbonara, stay for the whole menu.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+    </div>
+
+    <div class="cat-label" style="font-size:.78rem;margin-top:18px;color:var(--text-mid);">🍷 Dinner</div>
+    <div class="resto-grid">
+      <a class="resto-card" href="https://www.google.com/maps/search/One80+restaurant+Valletta+Malta" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;background:white;padding:4px;border-radius:4px;display:inline-block;"><img src="one80.svg" alt="One80" style="height:40px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">One80</div>
+        <span class="resto-tag">Dinner · Reserve ahead</span>
+        <div class="resto-desc">Our pick for a more considered evening out in Valletta. Worth booking in advance, especially on weekends.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+      <a class="resto-card" href="https://www.google.com/maps/search/The+Rooftop+Restaurant+Valletta+Malta" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div style="margin-bottom:12px;"><img src="the-rooftop.webp" alt="The Rooftop" style="height:44px;width:auto;object-fit:contain;display:block;"></div>
+        <div class="resto-name">The Rooftop</div>
+        <span class="resto-tag">Dinner · Panoramic views</span>
+        <div class="resto-desc">Rooftop dining in the heart of Valletta — great food with sweeping views over the city. A memorable setting for an evening out.</div>
+        <div style="margin-top:10px;"><span class="map-btn">Map →</span></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GETTING AROUND -->
+<section id="around">
+  <div class="container">
+    <div class="section-eyebrow">Mobility</div>
+    <h2 class="section-title">Getting Around</h2>
+    <div class="gold-bar"></div>
+
+    <div class="transport-grid">
+      <div class="transport-card">
+        <span class="transport-icon">🚶</span>
+        <div class="transport-name">On foot</div>
+        <div class="transport-desc">Birgu's historic centre is compact. The waterfront, restaurants, and main sights are all reachable in a few minutes on foot.</div>
+      </div>
+      <div class="transport-card">
+        <span class="transport-icon">⛴️</span>
+        <div class="transport-name">Ferry to Valletta</div>
+        <div class="transport-desc">The Cospicua ↔ Valletta ferry is the quickest and most scenic way to reach Valletta — a short crossing across the Grand Harbour. Schedule below.</div>
+      </div>
+      <div class="transport-card">
+        <span class="transport-icon">🚌</span>
+        <div class="transport-name">Bus</div>
+        <div class="transport-desc">Buses connect Birgu with Valletta and the rest of the island. Affordable, but the ferry is usually faster for Valletta.</div>
+      </div>
+      <div class="transport-card">
+        <span class="transport-icon">🚗</span>
+        <div class="transport-name">Bolt</div>
+        <div class="transport-desc">Bolt operates in Malta and is reliable for getting around — useful at night, in bad weather, or for longer distances.</div>
+      </div>
+      <div class="transport-card full">
+        <span class="transport-icon">✈️</span>
+        <div>
+          <div class="transport-name">Airport Transfer</div>
+          <div class="transport-desc">We can arrange a private airport transfer on request — convenient for your arrival or departure. Just ask us in advance and we'll organise it for you.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-label" style="margin-top:32px;">⛴️ Ferry Schedule — Cospicua ↔ Valletta</div>
+    <div class="card" style="padding:14px;">
+      <a href="ferry-schedule.jpg" target="_blank" rel="noopener" style="display:block;">
+        <img src="ferry-schedule.jpg" alt="Ferry schedule Cospicua to Valletta" style="width:100%;height:auto;border-radius:6px;display:block;">
+      </a>
+      <p style="font-size:.83rem;color:var(--text-light);margin-top:10px;line-height:1.6;">Winter schedule (1 Nov – 31 May) and summer schedule (1 Jun – 31 Oct). Tap to enlarge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MUST-SEE -->
+<section id="mustsee">
+  <div class="container">
+    <div class="section-eyebrow">Worth your time</div>
+    <h2 class="section-title">Must-See Nearby</h2>
+    <div class="gold-bar"></div>
+
+    <div class="cat-label" style="margin-top:0;">🏰 In Birgu</div>
+    <div class="places-list">
+      <a class="place-card" href="https://www.google.com/maps/search/Fort+St+Angelo+Birgu+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Fort St Angelo</div>
+          <div class="place-desc">The most iconic landmark of the Three Cities — a medieval fortress at the tip of Birgu with sweeping views of the Grand Harbour and Valletta.</div>
+          <div class="place-dist">Short walk</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://www.google.com/maps/search/St+Lawrence+Church+Birgu+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">St Lawrence Church</div>
+          <div class="place-desc">A baroque parish church right behind the townhouse — beautifully preserved, with a quiet square that's a perfect place to pause.</div>
+          <div class="place-dist">A few steps away</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://www.google.com/maps/search/Inquisitor's+Palace+Birgu+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Inquisitor's Palace</div>
+          <div class="place-desc">A rare surviving palace of the Roman Inquisition, now a museum exploring everyday life and justice under the Knights and beyond.</div>
+          <div class="place-dist">Short walk</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://www.google.com/maps/search/Malta+Maritime+Museum+Birgu" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Malta Maritime Museum</div>
+          <div class="place-desc">Set inside a former Royal Naval Bakery on the waterfront — a deep dive into Malta's strong maritime history.</div>
+          <div class="place-dist">Waterfront</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://www.google.com/maps/search/Collachio+Birgu+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Il-Collachio</div>
+          <div class="place-desc">The original quarter of the Knights of St John — narrow medieval lanes lined with auberges. The most atmospheric corner of Birgu.</div>
+          <div class="place-dist">Around the corner</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://www.google.com/maps/search/Birgu+Waterfront+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Birgu Waterfront</div>
+          <div class="place-desc">A restored seafront promenade lined with restaurants and yachts — particularly beautiful at sunset and after dark.</div>
+          <div class="place-dist">Short walk</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+    </div>
+
+    <div class="cat-label" style="margin-top:28px;">🏛️ Across the harbour — Valletta</div>
+    <div class="places-list">
+      <a class="place-card" href="https://www.google.com/maps/place/Valletta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Valletta Historic Centre</div>
+          <div class="place-desc">A UNESCO World Heritage city — the entire urban fabric is worth exploring. Walk the main streets, find the side alleys, and let the architecture speak.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://maps.app.goo.gl/jd4US658mUzca87y9" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Upper Barrakka Gardens</div>
+          <div class="place-desc">Malta's most iconic viewpoint — sweeping views over the Grand Harbour and the Three Cities. Stunning at any time of day, particularly at sunset.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://maps.app.goo.gl/vPsDDBGt1f6Dszrq8" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">St John's Co-Cathedral</div>
+          <div class="place-desc">One of the most ornate Baroque interiors in Europe, and home to Caravaggio's largest painting. Worth every minute inside.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://maps.app.goo.gl/Brj6M2TX8GqADMzq7" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Fort St Elmo</div>
+          <div class="place-desc">A 16th-century fortress at the tip of Valletta, now home to the National War Museum. Great views of the harbour entrance.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+      <a class="place-card" href="https://maps.app.goo.gl/oP99k6bJzTeMDEKAA" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Lascaris War Rooms</div>
+          <div class="place-desc">The WWII underground operations centre carved into the bastions — a fascinating and well-preserved piece of history beneath the city.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+    </div>
+
+    <div class="cat-label" style="margin-top:28px;">🏯 Beyond Valletta — Mdina</div>
+    <div class="places-list">
+      <a class="place-card" href="https://www.google.com/maps/place/Mdina+Malta" target="_blank" rel="noopener">
+        <div>
+          <div class="place-name">Mdina — The Silent City</div>
+          <div class="place-desc">Malta's ancient walled capital in the centre of the island — narrow stone streets, grand palazzos, and an atmosphere unlike anywhere else on Malta. Best visited early morning.</div>
+        </div>
+        <span class="map-btn">Map →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BEACHES -->
+<section id="beaches">
+  <div class="container">
+    <div class="section-eyebrow">Sea & Sun</div>
+    <h2 class="section-title">Beaches</h2>
+    <div class="gold-bar"></div>
+    <p style="font-size:.9rem;color:var(--text-mid);margin-bottom:20px;">A few of Malta's best coastal spots — all easy day trips from Birgu.</p>
+    <div class="beach-grid">
+      <div class="beach-card">
+        <span class="beach-emoji">🏖️</span>
+        <div class="beach-name">Golden Bay</div>
+        <div class="beach-dist">Sandy bay · West coast</div>
+      </div>
+      <div class="beach-card">
+        <span class="beach-emoji">🌊</span>
+        <div class="beach-name">St Peter's Pool</div>
+        <div class="beach-dist">Natural rock pool · South-east</div>
+      </div>
+      <div class="beach-card">
+        <span class="beach-emoji">🏝️</span>
+        <div class="beach-name">Mellieħa Bay</div>
+        <div class="beach-dist">Family-friendly · North coast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY TRIPS -->
+<section id="trips">
+  <div class="container">
+    <div class="section-eyebrow">Further afield</div>
+    <h2 class="section-title">Day Trips</h2>
+    <div class="gold-bar"></div>
+
+    <div class="trips-grid">
+      <div class="trip-card">
+        <span class="trip-icon">⛵</span>
+        <div class="trip-name">Gozo</div>
+        <div class="trip-desc">Malta's sister island — slower, greener, and worth a full day. A noticeably different pace.</div>
+        <div class="trip-how">Ferry from Ċirkewwa</div>
+      </div>
+      <div class="trip-card">
+        <span class="trip-icon">🐟</span>
+        <div class="trip-name">Comino & Blue Lagoon</div>
+        <div class="trip-desc">Malta's most iconic swimming spot. Arrive early — it gets busy by mid-morning in summer.</div>
+        <div class="trip-how">Organised boat trip</div>
+      </div>
+      <div class="trip-card">
+        <span class="trip-icon">🚤</span>
+        <div class="trip-name">Coastal Boat Tour</div>
+        <div class="trip-desc">See Malta from the water — caves, coves, and stretches of coastline you can't reach on foot.</div>
+        <div class="trip-how">Organised day trip</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow">We're here</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="gold-bar"></div>
+
+    <p class="contact-intro">Reach out at any point during your stay — we're available on WhatsApp and will get back to you as soon as possible.</p>
+
+    <div class="contact-cards">
+      <a class="contact-card" href="https://wa.me/35677395793" target="_blank" rel="noopener">
+        <div class="contact-avatar">S</div>
+        <div class="contact-name">Samy</div>
+        <div class="contact-role">Primary contact</div>
+        <div class="contact-number">+356 7739 5793</div>
+        <span class="wa-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </span>
+      </a>
+      <a class="contact-card" href="https://wa.me/35677328338" target="_blank" rel="noopener">
+        <div class="contact-avatar">D</div>
+        <div class="contact-name">Dimitri</div>
+        <div class="contact-role">Backup contact</div>
+        <div class="contact-number">+356 7732 8338</div>
+        <span class="wa-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616 581">
+      <path fill="#b49b57" d="M468.38,330.38c-.42-.52-1.02-.9-1.72-1.05-18.46-3.74-27.17-13.11-37.86-35.51l-117.92-252.99c-1.3-2.78-5.25-2.76-6.51.03l-110.69,251.06c-.29.64-.58,1.27-.87,1.89-.91,1.93-1.85,3.77-2.83,5.51-9.51,18.47-18.17,26.46-35.01,30.01-2.58.54-2.4,3.84-2.4,3.94h10.06c19.98,0,37.82-12.19,46.86-29.67l4.15-9.67.09-.24.46-1.08,25.95-60.54h122.59l26.97,59.54c11.22,24.76,33.4,41.66,69.35,41.66h10.01c0-.71-.25-2.37-.68-2.89ZM246.11,218.14l53.62-125.13,56.17,125.13h-109.79Z"/>
+      <path fill="#151b54" d="M414.04,329.02c-.27-.34-.68-.56-1.12-.69-5.72-1.73-19.87-8.82-26.88-23.5l-75.16-165.47c-.85-1.82-3.44-1.81-4.26.02l-34.73,78.76h12.57l15.34-35.79,15.97,35.79,34.55,77.43c9.39,21.03,30.06,35.06,53.09,35.27.68,0,1.37,0,2.07-.01.82.05,1.64.08,2.45.08h6.56c0-.47-.17-1.55-.45-1.89h0ZM234.11,303.82c-.19.42-.38.84-.57,1.24-.59,1.27-1.21,2.47-1.85,3.61-6.23,12.1-11.9,17.33-22.93,19.66-1.69.35-1.57,2.51-1.57,2.58h6.58c13.09,0,24.78-7.99,30.7-19.43l2.72-6.34.06-.16.3-.7,30.94-72.21h-12.74l-31.64,71.75h0Z"/>
+    </svg>
+  </div>
+  <h2>Enjoy <em>every moment</em><br>of your stay.</h2>
+  <p>Birgu is a town that rewards those who slow down. We hope this guide makes everything a little easier.</p>
+  <a class="btn-gold" href="https://wa.me/35677395793" target="_blank" rel="noopener">Need anything? Message us</a>
+  <div class="closing-tagline">Aureum Apartments · Birgu, Malta</div>
+</div>
+
+<script>
+  // Copy WiFi password — works on file://, http:// and https://
+  function copyWifi(btn, text) {
+    var svgCheck = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    function showCopied() {
+      var original = btn.innerHTML;
+      btn.innerHTML = svgCheck + ' Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.innerHTML = original;
+        btn.classList.remove('copied');
+      }, 2200);
+    }
+
+    // Method 1: modern clipboard API (works on https and localhost)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showCopied).catch(fallback);
+    } else {
+      fallback();
+    }
+
+    // Method 2: legacy execCommand fallback (works on file://)
+    function fallback() {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        // iOS
+        var range = document.createRange();
+        range.selectNodeContents(ta);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, 999999);
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showCopied();
+      } catch (e) {
+        btn.innerHTML = '⚠ Copy manually';
+      }
+    }
+  }
+
+  // Smooth scroll with sticky nav offset + force same-page on all internal links
+  (function () {
+    var NAV_HEIGHT = 64;
+
+    function smoothScrollTo(target) {
+      var el = document.querySelector(target);
+      if (!el) return;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    // Force target="_self" on every internal anchor link so no browser dialog appears
+    function fixInternalLinks() {
+      var links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(function(link) {
+        link.setAttribute('target', '_self');
+        link.setAttribute('rel', '');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', fixInternalLinks);
+
+    // Intercept all clicks on internal anchor links
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      e.preventDefault();
+      e.stopPropagation();
+      smoothScrollTo(href);
+      if (history.pushState) {
+        history.pushState(null, null, href);
+      }
+    }, true); // useCapture=true intercepts before browser default
+
+    // Handle direct URL hash on page load
+    window.addEventListener('load', function () {
+      fixInternalLinks();
+      if (window.location.hash) {
+        setTimeout(function () {
+          smoothScrollTo(window.location.hash);
+        }, 120);
+      }
+    });
+  })();
+</script>
+
+</div><!-- end guestbookContent -->
+
+<script>
+  // PIN Gate
+  (function () {
+    var CORRECT_PIN = '2468';
+    var SESSION_KEY = 'aureum_unlocked';
+
+    var gate = document.getElementById('pinGate');
+    var content = document.getElementById('guestbookContent');
+    var input = document.getElementById('pinInput');
+    var btn = document.getElementById('pinBtn');
+    var error = document.getElementById('pinError');
+
+    function unlock() {
+      gate.style.display = 'none';
+      content.style.display = 'block';
+      document.body.style.overflow = '';
+      try { sessionStorage.setItem(SESSION_KEY, '1'); } catch(e) {}
+    }
+
+    // Check session storage — keep unlocked on refresh
+    try {
+      if (sessionStorage.getItem(SESSION_KEY) === '1') { unlock(); return; }
+    } catch(e) {}
+
+    // Prevent body scroll while gate is visible
+    document.body.style.overflow = 'hidden';
+
+    function attempt() {
+      if (input.value === CORRECT_PIN) {
+        unlock();
+      } else {
+        error.classList.add('visible');
+        input.classList.add('error');
+        input.value = '';
+        input.focus();
+        setTimeout(function () {
+          error.classList.remove('visible');
+          input.classList.remove('error');
+        }, 2500);
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attempt();
+    });
+  })();
+</script>
+
+</body>
+</html>
